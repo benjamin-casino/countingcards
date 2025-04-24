@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Blackjack Card Counting Trainer</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <script src="./static/js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="" id="startForm" class="card-form">
+            <h1>Blackjack Card Counting Trainer</h1>
+            <p class="subtitle">Master the art of card counting with regular practice</p>
+            
+            <div id="inputs">
+                <div class="input-group">
+                    <label for="speed">Card Display Speed (ms)</label>
+                    <div class="range-container">
+                        <input type="range" id="speedRange" min="100" max="5000" value="1000" step="100">
+                        <input type="number" id="speed" name="speed" value="1000">
+                    </div>
+                    <span class="hint">Faster speeds simulate real casino conditions</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="number">Number of Cards</label>
+                    <input type="number" id="number" name="number" value="20" min="5" max="52">
+                    <span class="hint">More cards means a longer training session</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="strategy">Counting Strategy</label>
+                    <select name="strategy" id="strategy">
+                        <option value="Hi-Lo">Hi-Lo</option>
+                        <option value="Zen Count">Zen Count</option>
+                    </select>
+                    <span class="hint">Each strategy assigns different values to cards</span>
+                </div>
+            </div>
+            
+            <button type="submit" class="start-btn">Start Training</button>
+        </form>
+        
+        <main id="game" class="game-container">
+            <div class="game-header">
+                <div class="game-stat">
+                    <span class="stat-label">Cards Left:</span>
+                    <span id="cardsLeft" class="stat-value">0</span>
+                </div>
+                <div class="game-stat">
+                    <span class="stat-label">Speed:</span>
+                    <span id="speedLabel" class="stat-value">1000</span>
+                    <span class="stat-unit">ms</span>
+                </div>
+                <div class="game-stat">
+                    <span class="stat-label">Strategy:</span>
+                    <span id="currentStrategy" class="stat-value">Hi-Lo</span>
+                </div>
+            </div>
+            
+            <div class="card-display">
+                <span id="countDown" class="count-down">3</span>
+                <img src="" alt="Playing card" id="cardContainer" class="card-image">
+            </div>
+            
+            <div class="controls">
+                <button id="pauseBtn" class="control-btn" disabled>Pause</button>
+                <button id="resetBtn" class="control-btn secondary">Reset</button>
+            </div>
+        </main>
+        
+        <form id="result" class="result-form">
+            <h2>Training Complete!</h2>
+            
+            <div class="input-group result-input">
+                <label for="finalCount">What is the final count?</label>
+                <input type="number" id="finalCount" name="finalCount" placeholder="Enter your count...">
+            </div>
+            
+            <button type="submit" class="submit-btn">Check Result</button>
+            
+            <div id="resultMessage" class="result-message"></div>
+            
+            <button type="button" id="playAgainBtn" class="play-again-btn">Train Again</button>
+        </form>
+    </div>
+    
+    <!-- Modal for strategy information -->
+    <div id="strategyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Strategy Guide</h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+</body>
+
+</html>
